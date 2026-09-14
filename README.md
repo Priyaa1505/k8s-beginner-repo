@@ -174,7 +174,7 @@ k8s-beginner-repo/
     ├── 08-docker-image.png 
     ├── 09-scaling.png 
     ├── 10-rolling-update.png 
-    ├── 11-rollback.png 
+   
     
 
 
