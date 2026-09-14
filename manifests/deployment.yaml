@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nginx-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+
+    spec:
+      containers:
+        - name: nginx
+          image: kubernetes-nginx-app:2.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: nginx-config
+                  key: APP_ENV
+
+            - name: APP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: nginx-config
+                  key: APP_VERSION
